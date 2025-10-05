@@ -8,13 +8,18 @@ docker pull docker/getting-started
 docker images
 ```
 
-### Run the getting-started container
+### Run container
+```
+docker run -d -p hostport:containerport namespace/name:tag
+```
 - `-d`: Run in detached mode (don't block terminal)
 - `-p`: Publish (forward) container's port to the host
 - `hostport`: Port on local machine
 - `containerport`: Port inside container
 - `namespace/name`: Image name (usually username/repo)
 - `tag`: Image version (usually latest)
+
+### Run getting-started container
 ```
 docker run -d -p 8965:80 docker/getting-started:latest
 ```
