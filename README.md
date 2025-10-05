@@ -1,3 +1,5 @@
+## Images
+
 ### Pull the getting-started image
 ```
 docker pull docker/getting-started
@@ -30,3 +32,15 @@ docker ps
 ```
 
 Now you can view the Getting started Web Page at `http://localhost:8965` which is being forwarded to port 80 in the container. 
+
+### Stop/Kill running container
+```
+docker stop <container_id>
+docker kill <container_id>
+```
+
+## Volumes
+- Create volume: `docker volume create ghost-vol`
+- List volumes: `docker volume ls`
+- Inspect volume: `docker inspect ghost-vol`
+
