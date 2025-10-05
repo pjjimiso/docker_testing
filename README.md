@@ -39,6 +39,11 @@ docker stop <container_id>
 docker kill <container_id>
 ```
 
+### Stop ALL running containers
+```
+docker stop $(docker ps -q)
+```
+
 ## Volumes
 - Create volume: `docker volume create ghost-vol`
 - List volumes: `docker volume ls`
