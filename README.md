@@ -91,3 +91,18 @@ docker run -d --network caddytest -p 8880:80 -v $PWD/Caddyfile:/etc/caddy/Caddyf
 ```
 5. Open `http://localhost:8880/` in your browser and refresh the page. It should swap back and forth between caddy1 and caddy2 containers
 
+
+## Dockerfiles
+
+- Build an image from Dockerfile in CWD: `docker build . -t helloworld:latest`
+
+## Dockerize a simple Go server (main.go)
+
+1. Set PORT env: `export PORT=8999`
+2. Build the Go server: `go build`
+3. Run the server: `./docker_testing`
+4. Test endpoints: `curl localhost:8999`
+5. Build the Dockerfile: `docker build . -t docker_testing:latest`
+    - **NOTE**: we changed the port to 8991 in Dockerfile
+6. Run the container: `docker run -p 8991:8991 docker_testing`
+
