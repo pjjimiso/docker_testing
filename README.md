@@ -96,7 +96,7 @@ docker run -d --network caddytest -p 8880:80 -v $PWD/Caddyfile:/etc/caddy/Caddyf
 
 - Build an image from Dockerfile in CWD: `docker build . -t helloworld:latest`
 
-## Dockerize a simple Go server (main.go)
+## Dockerize a simple Go server (main.go, Dockerfile)
 
 1. Set PORT env: `export PORT=8999`
 2. Build the Go server: `go build`
@@ -106,3 +106,10 @@ docker run -d --network caddytest -p 8880:80 -v $PWD/Caddyfile:/etc/caddy/Caddyf
     - **NOTE**: we changed the port to 8991 in Dockerfile
 6. Run the container: `docker run -p 8991:8991 docker_testing`
 
+
+## Dockerize our Bookbot Python script (main.py, Dockerfile.py)
+
+1. Build the Dockerfile: `docker build -t bookbot -f Dockerfile.py .`
+2. Run the container: `docker run bookbot`
+
+Notice that building the Go server is more complex, but the Dockerfile is simple because it just needs to provide the compiled binary. With Python, our Dockerfile is more complicated because we have to install the specific Python interpreter and its dependencies in every container. 
