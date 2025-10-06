@@ -113,3 +113,10 @@ docker run -d --network caddytest -p 8880:80 -v $PWD/Caddyfile:/etc/caddy/Caddyf
 2. Run the container: `docker run bookbot`
 
 Notice that building the Go server is more complex, but the Dockerfile is simple because it just needs to provide the compiled binary. With Python, our Dockerfile is more complicated because we have to install the specific Python interpreter and its dependencies in every container. 
+The size difference of each container is huge as well! 
+```
+docker images
+REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
+bookbot                  latest    46a38b650ee6   6 minutes ago    1.38GB
+docker_testing           latest    0db4ac7a1e4d   44 minutes ago   130MB
+```
