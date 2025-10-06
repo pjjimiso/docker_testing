@@ -76,3 +76,18 @@ docker exec -it <container_id> bash
 docker network create caddytest
 ```
 
+## Create a simple load balancer using Caddy 
+
+1. Pull the caddy docker image: `docker pull caddy`
+2. Create a new network: `docker network create caddytest`
+3. Run two containers serving index1.html and index2.html
+```
+docker run -d -name caddy1 --network caddytest -v $PWD/index1.html:/usr/share/caddy/index.html caddy
+docker run -d -name caddy2 --network caddytest -v $PWD/index2.html:/usr/share/caddy/index.html caddy
+```
+4. Start the round robin load balancer using Caddyfile 
+```
+docker run -d --network caddytest -p 8880:80 -v $PWD/Caddyfile:/etc/caddy/Caddyfile caddy
+```
+5. Open `http://localhost:8880/` in your browser and refresh the page. It should swap back and forth between caddy1 and caddy2 containers
+
