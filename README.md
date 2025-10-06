@@ -39,6 +39,11 @@ docker stop <container_id>
 docker kill <container_id>
 ```
 
+### Remove container
+```
+docker rm <container_id>
+```
+
 ### Stop ALL running containers
 ```
 docker stop $(docker ps -q)
@@ -48,4 +53,26 @@ docker stop $(docker ps -q)
 - Create volume: `docker volume create ghost-vol`
 - List volumes: `docker volume ls`
 - Inspect volume: `docker inspect ghost-vol`
+
+
+## Exec
+
+### Execute a command in the container 
+```
+docker exec <container_id> ls 
+```
+
+### Get an interactive shell in the container
+- `-i`: make exec interactive
+- `-t`: return tty (keyboard)
+```
+docker exec -it <container_id> bash
+```
+
+## Networks
+
+### Create a network
+```
+docker network create caddytest
+```
 
