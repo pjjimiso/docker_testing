@@ -134,7 +134,7 @@ docker_testing           latest    0db4ac7a1e4d   44 minutes ago   130MB
 
 ## Run containers that stress-test CPU and Memory
 
-[stress-ng]https://hub.docker.com/r/alexeiled/stress-ng is a pre-built container for testing CPU and Memory utilization
+[stress-ng](https://hub.docker.com/r/alexeiled/stress-ng) is a pre-built container for testing CPU and Memory utilization
 
 1. Run CPU stress-test
 ```
