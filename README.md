@@ -107,7 +107,7 @@ docker run -d --network caddytest -p 8880:80 -v $PWD/Caddyfile:/etc/caddy/Caddyf
 6. Run the container: `docker run -p 8991:8991 docker_testing`
 
 
-## Dockerize our Bookbot Python script (main.py, Dockerfile.py)
+## Dockerize Bookbot Python script (main.py, Dockerfile.py)
 
 1. Build the Dockerfile: `docker build -t bookbot -f Dockerfile.py .`
 2. Run the container: `docker run bookbot`
@@ -120,3 +120,35 @@ REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
 bookbot                  latest    46a38b650ee6   6 minutes ago    1.38GB
 docker_testing           latest    0db4ac7a1e4d   44 minutes ago   130MB
 ```
+
+## Logs
+
+- Print container log file: `docker logs <container_id>`
+- Follow log file: `docker logs -f <container_id>`
+- Tail log file: `docker logs --tail 5 <container_id>`
+
+## Resource Utilization
+
+- Overall resource usage of running containers: `docker stats`
+- Top processes running in a container: `docker top <container_id>`
+
+## Run containers that stress-test CPU and Memory
+
+[stress-ng]https://hub.docker.com/r/alexeiled/stress-ng is a pre-built container for testing CPU and Memory utilization
+
+1. Run CPU stress-test
+```
+docker run -d --name cpu-stress alexeiled/stress-ng --cpu 2 --timeout 10m
+```
+2. Run Memory stress-test
+```
+docker run -d --name mem-stress alexeiled/stress-ng --vm 1 --vm-bytes 1G --timeout 10m
+```
+
+### Limit a container's CPU/Memory
+- Limit CPU: `--cpus`
+- Limit Mem: `--memory`
+```
+docker run -d --cpus=1 --memory=1GB --name stress-test alexeiled/stress-ng --cpu 2 --vm 1 --vm-bytes 2G --timeout 10m
+```
+
