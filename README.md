@@ -152,3 +152,6 @@ docker run -d --name mem-stress alexeiled/stress-ng --vm 1 --vm-bytes 1G --timeo
 docker run -d --cpus=1 --memory=1GB --name stress-test alexeiled/stress-ng --cpu 2 --vm 1 --vm-bytes 2G --timeout 10m
 ```
 
+## Docker Hub
+
+1. Push image to Docker Hub: `docker push pjjimiso/goserver`
